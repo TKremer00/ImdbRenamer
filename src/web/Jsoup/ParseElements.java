@@ -1,4 +1,4 @@
-package web;
+package web.Jsoup;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -6,6 +6,7 @@ import org.jsoup.select.Elements;
 import web.interfaces.IParseElements;
 
 public class ParseElements implements IParseElements {
+
     private Document parse(String html)  {
         return Jsoup.parse(html);
     }

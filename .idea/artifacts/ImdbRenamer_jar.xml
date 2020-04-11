@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ImdbRenamer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ImdbRenamer_jar</output-path>
+    <root id="archive" name="ImdbRenamer.jar">
+      <element id="module-output" name="ImdbRenamer" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.13.1/jsoup-1.13.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
