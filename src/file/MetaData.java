@@ -10,13 +10,14 @@ public class MetaData implements IMetaData {
 
     private String getExtension(String name) {
         int i = name.lastIndexOf('.');
-        return name.substring(i);
+        return name.substring(i).toLowerCase();
     }
 
     @Override
     public void ChangeName(File file,String template,int season, int episode, String name) {
         String title = String.format(template,season,episode,name);
-        File new_file = new File("Season " + season + "\\" + title + getExtension(file.getName()));
+        File new_file = new File("Season " + season + File.separator + title + getExtension(file.getName()));
+
         if(new_file.exists())
             return;
 
