@@ -5,6 +5,7 @@ import file.interfaces.*;
 import web.Jsoup.*;
 import web.interfaces.*;
 import java.io.File;
+import java.util.ArrayList;
 
 public class Renamer {
 
@@ -37,8 +38,7 @@ public class Renamer {
 
         Template = args[1];
 
-        if(nameTemplate.equals(""))
-        {
+        if(nameTemplate.equals(""))  {
             nameTemplate = args[2] + " ~ Season %d ~ Episode %d ~ %s";
         }
 
@@ -46,13 +46,13 @@ public class Renamer {
 
         int index = 0;
         for (String link:href_episodes) {
-            
             // If link not contains season go to next
             if(!link.contains("season="))
                 continue;
             index++;
 
-            String[] elements = getNames(link);
+            String[] elements = removeDoubles(getNames(link));
+
             File[] files = FILE_HANDLER.getSeriesFiles("Season " + index);
 
             for (int i = 0; i < files.length; i++) {
@@ -86,7 +86,7 @@ public class Renamer {
         String content = FIND.findByClass(doc,IMAGE_CONTAINER_CLASS);
 
         // get the alt of the images
-        return FIND.getAttribute(content, "img","alt");
+        return FIND.getAttribute(content, "a","title");
     }
 
     private static String[] reverse(String[] a)
@@ -98,5 +98,16 @@ public class Renamer {
             j = j - 1;
         }
         return b;
+    }
+
+    private static String[] removeDoubles(String[] a)
+    {
+        ArrayList<String> b = new ArrayList<>();
+
+        for (String item :  a) {
+            if (!item.equals("") && !b.contains(item))
+                b.add(item);
+        }
+        return b.toArray(new String[0]);
     }
 }

@@ -9,5 +9,5 @@ To use this application run the jar with the first argument the link to the main
 
 ## Example
 if serie is <a href="https://www.imdb.com/title/tt0944947/">Game of Thrones</a> :<br>
-java imdbRenamer.jar title/tt0944947/ S1 E%d(template of files) Game of Thrones(optional)
+java imdbRenamer.jar title/tt0944947/ "S1 E%d"(template of files) "Game of Thrones"(optional)
 
