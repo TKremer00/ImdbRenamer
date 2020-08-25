@@ -30,8 +30,7 @@ public class Renamer {
             System.out.println("No Serie specified");
             System.out.println("No Template specified");
             return;
-        }else if (args.length < 3)
-        {
+        }else if (args.length < 3)  {
             System.out.println("No Name specified");
             nameTemplate = "Season %d ~ Episode %d ~ %s";
         }
