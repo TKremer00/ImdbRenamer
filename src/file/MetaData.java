@@ -1,11 +1,12 @@
 package file;
 
 import file.interfaces.IMetaData;
+import imdbRenamer.Renamer;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.regex.Pattern;
 
 public class MetaData implements IMetaData {
 
@@ -15,16 +16,19 @@ public class MetaData implements IMetaData {
     }
 
     @Override
-    public void ChangeName(File file,String template,int season, int episode, String name) {
+    public boolean ChangeName(File file, String template, int season, int episode, String name) {
         String sanitizedName = name.replaceAll("[^a-zA-Z0-9.\\-]", " ");
 
         String title = String.format(template,season,episode,sanitizedName);
-        File new_file = new File("Season " + season + File.separator + title + getExtension(file.getName()));
+        File new_file = new File(String.format(Renamer.folderName,season) + File.separator + title + getExtension(file.getName()));
 
         if(new_file.exists())
-            return;
+            return false;
 
-        boolean success = file.renameTo(new_file);
+        if(!file.exists())
+            return false;
+
+        return file.renameTo(new_file);
     }
 
     @Override

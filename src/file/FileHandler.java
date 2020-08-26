@@ -2,8 +2,6 @@ package file;
 
 import file.interfaces.IFileHandler;
 import java.io.File;
-import java.util.Arrays;
-import java.util.Comparator;
 
 
 public class FileHandler implements IFileHandler {
@@ -12,7 +10,9 @@ public class FileHandler implements IFileHandler {
     public File[] getSeriesFiles(String season) {
         File dir = new File(season);
         File[] files = dir.listFiles();
-        assert files != null;
+        if (files == null || files.length == 0){
+            throw new AssertionError();
+        }
         files = FileSorter.sortFiles(files);
         return files;
     }

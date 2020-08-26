@@ -4,14 +4,14 @@ import imdbRenamer.Renamer;
 
 import java.io.File;
 
-class FileSorter {
+public class FileSorter {
 
     static File[] sortFiles(File[] files)
     {
         File[] tempFiles = new File[files.length];
 
         for (File file : files) {
-            int episode = getEpisodeNumber(Renamer.Template, file.getName());
+            int episode = getEpisodeNumber(Renamer.templateOld, file.getName());
             tempFiles[episode - 1] = file;
         }
         return tempFiles;
