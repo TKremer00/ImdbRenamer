@@ -22,10 +22,7 @@ public class MetaData implements IMetaData {
         String title = String.format(template,season,episode,sanitizedName);
         File new_file = new File(String.format(Renamer.folderName,season) + File.separator + title + getExtension(file.getName()));
 
-        if(new_file.exists())
-            return false;
-
-        if(!file.exists())
+        if(new_file.exists() && !file.exists())
             return false;
 
         return file.renameTo(new_file);
