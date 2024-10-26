@@ -28,7 +28,7 @@ public class Renamer {
 
     public static void main(String[] args) {
         if(args.length == 1){
-            System.out.println("no arguments given");
+            printHelp();
             return;
         }
 
@@ -101,7 +101,6 @@ public class Renamer {
                 // Change the name of the file
                 META_DATA.ChangeName(files[i], templateNew, index,(i + 1),elements[i]);
             }
-
         }
     }
 
@@ -151,5 +150,15 @@ public class Renamer {
                 b.add(item);
         }
         return b.toArray(new String[0]);
+    }
+
+    private static void printHelp()
+    {
+        System.out.println("Welcome to the help menu!");
+        System.out.println("Please provide any of the following arguments:");
+        System.out.println("1. -url= - set the url of the imdb page");
+        System.out.println("2. -templateOld= - set the input of the template of the files ");
+        System.out.println("3. -templateNew= - set the output of the template of the files");
+        System.out.println("4. -foldername= - set the folder name");
     }
 }
